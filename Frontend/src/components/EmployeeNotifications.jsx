@@ -37,7 +37,6 @@
 //     </div>
 //   );
 // }
-
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
@@ -58,7 +57,6 @@ export default function EmployeeNotifications() {
     };
   }, []);
 
-  // Decide which notifications to display
   const displayedNotifications = showAll ? notifications : notifications.slice(0, 1);
 
   return (
@@ -66,42 +64,55 @@ export default function EmployeeNotifications() {
       style={{
         maxHeight: 200,
         overflowY: 'auto',
-        border: '1px solid #ccc',
+        border: '1px solid #4A90E2',
         padding: 10,
-        width: '100%',      // full width of container
+        width: '100%',
         borderRadius: 8,
-        backgroundColor: '#fafafa',
+        backgroundColor: '#E6F0FA',
         boxSizing: 'border-box',
-        boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+        boxShadow: '0 2px 8px rgba(74, 144, 226, 0.3)',
       }}
     >
-      <h4 style={{ marginBottom: 10 }}>Employee Notifications</h4>
+      <h4 style={{ marginBottom: 10, color: '#2C3E50' }}>Employee Notifications</h4>
 
       <button
         onClick={() => setShowAll(!showAll)}
-        style={{ marginBottom: 10, cursor: 'pointer' }}
+        style={{
+          marginBottom: 10,
+          cursor: 'pointer',
+          backgroundColor: '#4A90E2',
+          color: '#fff',
+          border: 'none',
+          borderRadius: 4,
+          padding: '6px 12px',
+          fontWeight: '600',
+          transition: 'background-color 0.3s ease',
+        }}
+        onMouseEnter={e => e.currentTarget.style.backgroundColor = '#357ABD'}
+        onMouseLeave={e => e.currentTarget.style.backgroundColor = '#4A90E2'}
         aria-label={showAll ? 'Show only recent notification' : 'Show all notifications'}
       >
         {showAll ? '⬆️ Show Less' : '⬇️ Show All'}
       </button>
 
-      {displayedNotifications.length === 0 && <p>No notifications yet.</p>}
+      {displayedNotifications.length === 0 && <p style={{ color: '#7F8C8D' }}>No notifications yet.</p>}
 
       <ul style={{ paddingLeft: 20, margin: 0 }}>
         {displayedNotifications.map((notif, idx) => (
           <li
             key={idx}
             style={{
-              whiteSpace: 'nowrap',       // keep single line
+              whiteSpace: 'nowrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               marginBottom: 6,
               listStyleType: 'disc',
               fontSize: 14,
+              color: '#34495E',
             }}
-            title={`Employee ${notif.type}: ${notif.data.name} (${notif.data.email})`} // tooltip for full text
+            title={`Employee ${notif.type}: ${notif.data.name} (${notif.data.email})`}
           >
-            Employee <strong>{notif.type}</strong>: {notif.data.name} ({notif.data.email})
+            Employee <strong style={{ color: '#2980B9' }}>{notif.type}</strong>: {notif.data.name} ({notif.data.email})
           </li>
         ))}
       </ul>

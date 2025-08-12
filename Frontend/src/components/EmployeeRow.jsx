@@ -8,8 +8,8 @@ const EmployeeRow = ({ emp, handleEdit, handleDelete }) => {
       text: 'This will delete the employee.',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#90EE90',  // Light green confirm button
+      cancelButtonColor: '#FFCCCB',   // Light red cancel button
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) handleDelete(emp);
@@ -23,10 +23,18 @@ const EmployeeRow = ({ emp, handleEdit, handleDelete }) => {
       <td>{emp.email}</td>
       <td>{emp.department}</td>
       <td>
-        <button className="btn btn-success btn-sm me-2" onClick={() => handleEdit(emp)}>
+        <button
+          className="btn btn-sm me-2"
+          style={{ backgroundColor: '#1791d8ff', color: '#000', border: 'none' }}
+          onClick={() => handleEdit(emp)}
+        >
           Edit
         </button>
-        <button className="btn btn-danger btn-sm" onClick={confirmDelete}>
+        <button
+          className="btn btn-sm"
+          style={{ backgroundColor: '#ec4a4aff', color: '#000', border: 'none' }}
+          onClick={confirmDelete}
+        >
           Delete
         </button>
       </td>
