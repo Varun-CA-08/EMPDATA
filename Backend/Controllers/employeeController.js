@@ -101,7 +101,7 @@
 
 
 import redisClient from '../utils/redisClient.js';
-import Employee from '../models/employeeModel.js';
+import Employee from '../Models/employeeModel.js';
 
 export const getEmployees = async (req, res) => {
   try {
@@ -214,3 +214,6 @@ export const getEmployeeById = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
+
+
+//this is my employeecontroller//
