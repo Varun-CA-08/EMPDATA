@@ -13,6 +13,7 @@ import EmployeeForm from './components/EmployeeForm.jsx';
 import EmployeeSearch from './components/EmployeeSearch.jsx';
 import EmployeeTable from './components/EmployeeTable.jsx';
 import AuthPage from './components/AuthPage.jsx';
+import EmployeeNotifications from './components/EmployeeNotifications.jsx';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -182,10 +183,16 @@ function App() {
       </div>
 
       {/* Title */}
-      <div className="text-center mb-5">
-        <h1 className="display-5 fw-bold">Employee Manager</h1>
-        <p className="text-muted">Manage your organization’s team with ease</p>
-      </div>
+<div className="mb-4">
+  <h1 className="display-5 fw-bold">Employee Manager</h1>
+  <p className="text-muted">Manage your organization’s team with ease</p>
+
+  {/* Notifications below title */}
+  <div style={{ marginTop: '1rem' }}>
+    <EmployeeNotifications />
+  </div>
+</div>
+
 
       {/* Form & Search */}
       <div className="row g-4">

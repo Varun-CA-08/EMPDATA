@@ -49,56 +49,61 @@ const AuthPage = ({ onLogin }) => {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center min-vh-100 bg-light">
-      <div className="card shadow p-4" style={{ width: '100%', maxWidth: '400px' }}>
-        <h3 className="text-center mb-3">{isLogin ? 'Welcome Back' : 'Create an Account'}</h3>
+    <div className="d-flex align-items-center justify-content-center min-vh-100 bg-gradient-primary">
+      <div className="card shadow-lg p-5 rounded-4" style={{ width: '100%', maxWidth: '420px' }}>
+        <h3 className="text-center mb-4 fw-bold text-primary">
+          {isLogin ? 'Welcome Back' : 'Create an Account'}
+        </h3>
 
         {isLogin && (
-          <div className="text-muted text-center mb-3" style={{ fontSize: '0.85rem' }}>
+          <p className="text-center text-muted small mb-4">
             Only 3 login attempts allowed. After that, your account will be locked for 2 minutes.
-          </div>
+          </p>
         )}
 
         <form onSubmit={handleSubmit}>
           {!isLogin && (
-            <div className="form-floating mb-3">
+            <div className="form-floating mb-4">
               <input
                 type="text"
-                className="form-control"
+                className="form-control shadow-sm"
                 name="name"
                 id="nameInput"
                 placeholder="Name"
                 value={form.name}
                 onChange={handleChange}
+                autoComplete="name"
               />
               <label htmlFor="nameInput">Name</label>
             </div>
           )}
-          <div className="form-floating mb-3">
+          <div className="form-floating mb-4">
             <input
               type="email"
-              className="form-control"
+              className="form-control shadow-sm"
               name="email"
               id="emailInput"
               placeholder="Email"
               value={form.email}
               onChange={handleChange}
+              autoComplete="email"
             />
             <label htmlFor="emailInput">Email address</label>
           </div>
-          <div className="form-floating mb-4">
+          <div className="form-floating mb-5">
             <input
               type="password"
-              className="form-control"
+              className="form-control shadow-sm"
               name="password"
               id="passwordInput"
               placeholder="Password"
               value={form.password}
               onChange={handleChange}
+              autoComplete={isLogin ? "current-password" : "new-password"}
             />
             <label htmlFor="passwordInput">Password</label>
           </div>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn btn-primary w-100 shadow-sm fw-semibold fs-5">
             {isLogin ? 'Login' : 'Register'}
           </button>
         </form>
@@ -107,11 +112,12 @@ const AuthPage = ({ onLogin }) => {
           <small className="text-muted">
             {isLogin ? "Don't have an account? " : 'Already have an account? '}
             <button
-              className="btn btn-sm btn-link p-0"
+              className="btn btn-link p-0 fw-semibold"
               onClick={() => {
                 setIsLogin(!isLogin);
                 setForm({ name: '', email: '', password: '' });
               }}
+              style={{ textDecoration: 'underline' }}
             >
               {isLogin ? 'Register here' : 'Login here'}
             </button>
@@ -123,4 +129,3 @@ const AuthPage = ({ onLogin }) => {
 };
 
 export default AuthPage;
-
