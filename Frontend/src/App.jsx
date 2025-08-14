@@ -173,7 +173,8 @@ function App() {
   }
 
   return (
-    <div className="container py-5">
+    <div className="container py-5"style={{ backgroundColor: '#e8f4f8', minHeight: '100vh', boxSizing: 'border-box' }}
+  >
       {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2>👋 Welcome, {user.name}</h2>
@@ -188,7 +189,7 @@ function App() {
   <p className="text-muted">Manage your organization’s team with ease</p>
 
   {/* Notifications below title */}
-  <div style={{ marginTop: '1rem' }}>
+  <div style={{ backgroundColor: '#e8f4f8' ,marginTop: '1rem' }}>
     <EmployeeNotifications />
   </div>
 </div>

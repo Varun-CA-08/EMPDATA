@@ -27,6 +27,12 @@ export const addEmployee = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
+    // Check for duplicate email before saving
+    const existingEmp = await Employee.findOne({ email });
+    if (existingEmp) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
+
     const newEmployee = new Employee({ name, email, department });
     await newEmployee.save();
 
@@ -44,6 +50,7 @@ export const addEmployee = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
+
 
 export const updateEmployee = async (req, res) => {
   try {

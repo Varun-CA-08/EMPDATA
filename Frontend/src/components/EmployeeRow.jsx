@@ -8,8 +8,8 @@ const EmployeeRow = ({ emp, handleEdit, handleDelete }) => {
       text: 'This will delete the employee.',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#90EE90',  // Light green confirm button
-      cancelButtonColor: '#FFCCCB',   // Light red cancel button
+      confirmButtonColor: '#106610ff',  // Light green confirm button
+      cancelButtonColor: '#d12a27ff',   // Light red cancel button
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) handleDelete(emp);

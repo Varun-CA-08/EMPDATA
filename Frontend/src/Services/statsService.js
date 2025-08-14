@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:4000/api/stats';
+const BASE_URL = 'https://empdata-qurw.onrender.com/api/stats';
 
 export const getStats = (token) => {
   return axios.get(`${BASE_URL}/analytics`, {

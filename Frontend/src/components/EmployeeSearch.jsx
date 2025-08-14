@@ -2,7 +2,7 @@ import React from 'react';
 
 const EmployeeSearch = ({ searchId, onChange, onSearch, onClear, isSearching }) => (
   <form onSubmit={onSearch} className="row g-2 mb-4 justify-content-center">
-    <div className="col-auto">
+    <div className="col-auto" style={{ backgroundColor: '#e8f4f8'}}>
       <input
         type="text"
         placeholder="Search by ID"

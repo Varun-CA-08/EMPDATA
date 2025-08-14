@@ -50,7 +50,7 @@ const AuthPage = ({ onLogin }) => {
 
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100 bg-gradient-primary">
-      <div className="card shadow-lg p-5 rounded-4" style={{ width: '100%', maxWidth: '420px' }}>
+      <div className="card shadow-lg p-5 rounded-4" style={{backgroundColor: '#e8f4f8', width: '100%', maxWidth: '420px' }}>
         <h3 className="text-center mb-4 fw-bold text-primary">
           {isLogin ? 'Welcome Back' : 'Create an Account'}
         </h3>

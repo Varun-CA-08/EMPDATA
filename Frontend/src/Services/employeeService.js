@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:4000/api/employees';
+const BASE_URL = 'https://empdata-qurw.onrender.com/api/employees';
 
 const config = (token) => ({
   headers: { Authorization: `Bearer ${token}` }

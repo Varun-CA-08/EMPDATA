@@ -40,7 +40,7 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const SOCKET_SERVER_URL = 'http://localhost:4000';
+const SOCKET_SERVER_URL = 'https://empdata-qurw.onrender.com';
 const socket = io(SOCKET_SERVER_URL);
 
 export default function EmployeeNotifications() {
