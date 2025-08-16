@@ -40,7 +40,7 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const SOCKET_SERVER_URL = 'https://empdata-qurw.onrender.com';
+const SOCKET_SERVER_URL = 'https://empdata-qurw.onrender.com/';
 const socket = io(SOCKET_SERVER_URL);
 
 export default function EmployeeNotifications() {
@@ -68,7 +68,7 @@ export default function EmployeeNotifications() {
         padding: 10,
         width: '100%',
         borderRadius: 8,
-        backgroundColor: '#E6F0FA',
+        backgroundColor: '#dbe0e2ff',
         boxSizing: 'border-box',
         boxShadow: '0 2px 8px rgba(74, 144, 226, 0.3)',
       }}

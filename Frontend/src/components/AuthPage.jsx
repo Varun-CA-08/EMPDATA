@@ -57,7 +57,8 @@ const AuthPage = ({ onLogin }) => {
 
         {isLogin && (
           <p className="text-center text-muted small mb-4">
-            Only 3 login attempts allowed. After that, your account will be locked for 2 minutes.
+            Only 3 login attempts allowed.
+             {/* After that, your account will be locked for 2 minutes. */}
           </p>
         )}
 

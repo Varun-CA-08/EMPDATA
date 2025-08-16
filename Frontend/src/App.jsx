@@ -173,87 +173,133 @@ function App() {
   }
 
   return (
-    <div className="container py-5"style={{ backgroundColor: '#e8f4f8', minHeight: '100vh', boxSizing: 'border-box' }}
+  <div
+    className="container-fluid py-4"
+    style={{
+      backgroundColor: '#e8f4f8',
+      minHeight: '100vh',
+      width: '100%',
+      boxSizing: 'border-box',
+    }}
   >
-      {/* Header */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>👋 Welcome, {user.name}</h2>
-        <button className="btn btn-outline-danger" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
-
-      {/* Title */}
-<div className="mb-4">
-  <h1 className="display-5 fw-bold">Employee Manager</h1>
-  <p className="text-muted">Manage your organization’s team with ease</p>
-
-  {/* Notifications below title */}
-  <div style={{ backgroundColor: '#e8f4f8' ,marginTop: '1rem' }}>
-    <EmployeeNotifications />
-  </div>
-</div>
-
-
-      {/* Form & Search */}
-      <div className="row g-4">
-        <div className="col-lg-6">
-          <div className="card shadow-sm p-4">
-            <h5 className="mb-3">{editData ? '✏️ Edit Employee' : '➕ Add Employee'}</h5>
-            <EmployeeForm
-              form={form}
-              editData={editData}
-              handleChange={(e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))}
-              handleSubmit={handleSubmit}
-              onCancel={() => {
-                setForm({ name: '', email: '', department: '' });
-                setEditData(null);
-              }}
-            />
-          </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="card shadow-sm p-4">
-            <h5 className="mb-3">🔍 Search by ID</h5>
-            <EmployeeSearch
-              searchId={searchId}
-              onChange={(e) => setSearchId(e.target.value)}
-              onSearch={handleSearch}
-              onClear={clearSearch}
-              isSearching={isSearching}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Table */}
-      <div className="mt-5 card shadow-sm p-4">
-        <h5 className="mb-3"> Employee List</h5>
-        <EmployeeTable
-          employees={employees}
-          handleEdit={handleEdit}
-          handleDelete={handleDelete}
-        />
-      </div>
-
-      {/* Stats */}
-      {stats && (
-        <div className="mt-5 card shadow-sm p-4">
-          <h5 className="mb-3">📈 API Usage Stats</h5>
-          <div className="row">
-            {Object.entries(stats).map(([key, value], idx) => (
-              <div key={idx} className="col-md-4 mb-2">
-                <div className="border rounded p-3 bg-light text-center">
-                  <strong>{key.replace('analytics:', '').replace(/([A-Z])/g, ' $1')}</strong>
-                  <div className="badge bg-primary fs-6 mt-2">{value}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+    {/* Header */}
+    <div className="d-flex justify-content-between align-items-center mb-4">
+      <h2>👋 Welcome, {user.name}</h2>
+      <button className="btn btn-outline-danger" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
-  );
+
+    {/* Title */}
+    <div className="mb-4">
+      <h1 className="display-5 fw-bold">Employee Manager</h1>
+      <p className="text-muted">Manage your organization’s team with ease</p>
+
+      {/* Notifications below title */}
+      <div style={{ backgroundColor: '#e8f4f8', marginTop: '1rem' }}>
+        <EmployeeNotifications />
+      </div>
+    </div>
+
+    {/* Form & Search */}
+    <div className="row g-4">
+      <div className="col-lg-6">
+        <div
+          className="card shadow-sm p-4"
+          style={{ backgroundColor: '#dbe0e2ff' }}
+        >
+          <h5 className="mb-3">
+            {editData ? '✏️ Edit Employee' : '➕ Add Employee'}
+          </h5>
+          <EmployeeForm
+            form={form}
+            editData={editData}
+            handleChange={(e) =>
+              setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+            }
+            handleSubmit={handleSubmit}
+            onCancel={() => {
+              setForm({ name: '', email: '', department: '' });
+              setEditData(null);
+            }}
+          />
+        </div>
+      </div>
+
+      <div className="col-lg-6">
+        <div
+          className="card shadow-sm p-4"
+          style={{ backgroundColor: '#dbe0e2ff' }}
+        >
+          <h5 className="mb-3">🔍 Search by ID</h5>
+          <EmployeeSearch
+            searchId={searchId}
+            onChange={(e) => setSearchId(e.target.value)}
+            onSearch={handleSearch}
+            onClear={clearSearch}
+            isSearching={isSearching}
+          />
+        </div>
+      </div>
+    </div>
+
+    {/* Table */}
+    <div
+      className="mt-5 card shadow-sm p-4"
+      style={{
+        backgroundColor: '#dbe0e2ff',
+        padding: '1rem',
+        borderRadius: '8px',
+      }}
+    >
+      <h5 className="mb-3"> Employee List</h5>
+      <EmployeeTable
+        employees={employees}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+    </div>
+
+    {/* Stats */}
+    {stats && (
+      <div
+        className="mt-5 card shadow-sm p-4"
+        style={{ backgroundColor: '#e9f5ff' }}
+      >
+        <h5 className="mb-4 text-primary">📈 API Usage Stats</h5>
+
+        <div className="row">
+          {Object.entries(stats).map(([key, value], idx) => (
+            <div key={idx} className="col-md-4 mb-3">
+              <div
+                className="p-4 text-center border rounded"
+                style={{
+                  backgroundColor: '#dbe0e2ff',
+                  borderColor: '#b6e0fe',
+                  transition: 'transform 0.2s ease',
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.transform = 'scale(1.03)')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.transform = 'scale(1)')
+                }
+              >
+                <div className="fw-semibold text-dark mb-2">
+                  {key
+                    .replace('analytics:', '')
+                    .replace(/([A-Z])/g, ' $1')}
+                </div>
+                <div className="badge bg-info fs-6">{value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+);
 }
 
 export default App;
